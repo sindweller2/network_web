@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:io' show Platform;
 
-class InstagramPage extends StatefulWidget {
-  const InstagramPage({super.key});
+class FacebookPage extends StatefulWidget {
+  const FacebookPage({super.key});
 
   @override
-  InstagramPageState createState() => InstagramPageState();
+  FacebookPageState createState() => FacebookPageState();
 }
 
-class InstagramPageState extends State<InstagramPage> {
+class FacebookPageState extends State<FacebookPage> {
   late final WebViewController controller;
 
   @override
@@ -17,8 +19,7 @@ class InstagramPageState extends State<InstagramPage> {
     super.initState();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setUserAgent(
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Safari/605.1.15")
+      ..setUserAgent(getMobileUserAgent())
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
@@ -35,11 +36,26 @@ class InstagramPageState extends State<InstagramPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://www.instagram.com/'));
+      ..loadRequest(Uri.parse('https://m.facebook.com/'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: WebViewWidget(controller: controller));
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Facebook"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.replay,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                controller.reload();
+              },
+            )
+          ],
+        ),
+        body: WebViewWidget(controller: controller));
   }
 }

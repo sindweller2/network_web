@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:io' show Platform;
 
-class TiktokPage extends StatefulWidget {
-  const TiktokPage({super.key});
+class TelegramPage extends StatefulWidget {
+  const TelegramPage({super.key});
 
   @override
-  TiktokPageState createState() => TiktokPageState();
+  TelegramPageState createState() => TelegramPageState();
 }
 
-class TiktokPageState extends State<TiktokPage> {
+class TelegramPageState extends State<TelegramPage> {
   late final WebViewController controller;
 
   @override
@@ -17,8 +19,7 @@ class TiktokPageState extends State<TiktokPage> {
     super.initState();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setUserAgent(
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Safari/605.1.15")
+      ..setUserAgent(getMobileUserAgent())
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
@@ -35,11 +36,26 @@ class TiktokPageState extends State<TiktokPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://www.tiktok.com/'));
+      ..loadRequest(Uri.parse('https://web.telegram.org/k/'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: WebViewWidget(controller: controller));
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Telegram"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.replay,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                controller.reload();
+              },
+            )
+          ],
+        ),
+        body: WebViewWidget(controller: controller));
   }
 }

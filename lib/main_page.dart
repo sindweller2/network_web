@@ -1,16 +1,15 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/FacebookPage.dart';
-import 'package:network_web/InstagramPage.dart';
-import 'package:network_web/TelegramPage.dart';
-import 'package:network_web/TiktokPage.dart';
-import 'package:network_web/TwitterPage.dart';
-import 'package:network_web/WhatsappPage.dart';
+import 'package:network_web/facebook_page.dart';
+import 'package:network_web/instagram_page.dart';
+import 'package:network_web/telegram_page.dart';
+import 'package:network_web/tiktok_page.dart';
+import 'package:network_web/twitter_page.dart';
+import 'package:network_web/whatsapp_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
-import 'package:flutter_background/flutter_background.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
@@ -64,9 +63,6 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

@@ -1,4 +1,4 @@
-package com.example.network_web
+package com.daniel.networkWeb
 
 import io.flutter.embedding.android.FlutterActivity
 

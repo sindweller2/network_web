@@ -6,21 +6,21 @@
     "configurations": [
         {
             "name": "Flutter Debug",
-            "program": "lib/MainPage.dart",
+            "program": "lib/main_page.dart",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug"
         },
         {
             "name": "Flutter Profile",
-            "program": "lib/MainPage.dart",
+            "program": "lib/main_page.dart",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
             "name": "Flutter Release",
-            "program": "lib/MainPage.dart",
+            "program": "lib/main_page.dart",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

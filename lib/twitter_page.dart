@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:io' show Platform;
 
-class WhatsappPage extends StatefulWidget {
-  const WhatsappPage({super.key});
+class TwitterPage extends StatefulWidget {
+  const TwitterPage({super.key});
 
   @override
-  WhatsappPageState createState() => WhatsappPageState();
+  TwitterPageState createState() => TwitterPageState();
 }
 
-class WhatsappPageState extends State<WhatsappPage> {
+class TwitterPageState extends State<TwitterPage> {
   late final WebViewController controller;
 
   @override
@@ -17,8 +19,7 @@ class WhatsappPageState extends State<WhatsappPage> {
     super.initState();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setUserAgent(
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Safari/605.1.15")
+      ..setUserAgent(getMobileUserAgent())
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
@@ -35,11 +36,26 @@ class WhatsappPageState extends State<WhatsappPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://web.whatsapp.com/'));
+      ..loadRequest(Uri.parse('https://mobile.twitter.com/'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: WebViewWidget(controller: controller));
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Twitter"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.replay,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                controller.reload();
+              },
+            )
+          ],
+        ),
+        body: WebViewWidget(controller: controller));
   }
 }

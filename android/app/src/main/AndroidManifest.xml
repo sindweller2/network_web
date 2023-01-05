@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.network_web">
+    package="com.daniel.networkWeb">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Network Web"
         android:name="${applicationName}"
