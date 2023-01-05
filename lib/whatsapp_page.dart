@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'utility.dart';
+import 'Utility.dart';
 
 class WhatsappPage extends StatefulWidget {
   const WhatsappPage({super.key});
@@ -36,7 +34,7 @@ class WhatsappPageState extends State<WhatsappPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://web.whatsapp.com/'));
+      ..loadRequest(Uri.parse(whatsappURL()));
   }
 
   @override

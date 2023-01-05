@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+import 'Utility.dart';
 
 class FacebookPage extends StatefulWidget {
   const FacebookPage({super.key});
@@ -36,7 +34,7 @@ class FacebookPageState extends State<FacebookPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://m.facebook.com/'));
+      ..loadRequest(Uri.parse(facebookURL()));
   }
 
   @override

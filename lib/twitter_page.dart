@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+import 'Utility.dart';
 
 class TwitterPage extends StatefulWidget {
   const TwitterPage({super.key});
@@ -36,7 +34,7 @@ class TwitterPageState extends State<TwitterPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://mobile.twitter.com/'));
+      ..loadRequest(Uri.parse(twitterURL()));
   }
 
   @override

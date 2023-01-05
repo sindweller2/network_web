@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+import 'Utility.dart';
 
 class TiktokPage extends StatefulWidget {
   const TiktokPage({super.key});
@@ -36,7 +34,7 @@ class TiktokPageState extends State<TiktokPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://www.tiktok.com/'));
+      ..loadRequest(Uri.parse(tiktokURL()));
   }
 
   @override

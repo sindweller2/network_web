@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+import 'Utility.dart';
 
 class InstagramPage extends StatefulWidget {
   const InstagramPage({super.key});
@@ -36,7 +34,7 @@ class InstagramPageState extends State<InstagramPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://www.instagram.com/'));
+      ..loadRequest(Uri.parse(instagramURL()));
   }
 
   @override

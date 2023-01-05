@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:network_web/utility.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+import 'Utility.dart';
 
 class TelegramPage extends StatefulWidget {
   const TelegramPage({super.key});
@@ -36,7 +34,7 @@ class TelegramPageState extends State<TelegramPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://web.telegram.org/k/'));
+      ..loadRequest(Uri.parse(telegramURL()));
   }
 
   @override
